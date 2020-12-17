@@ -1,0 +1,27 @@
+.bigNumber {
+
+    font-size: 100px;
+}
+
+.table {
+    margin-top: 25px !important;
+}
+
+.flights_data {
+    margin-bottom: 70px !important;
+}
+
+.error {
+    color: #dc3545;
+    font-size: 90%;
+    font-style: italic;
+}
+
+.form-control.error {
+    border: 1px solid #dc3545;
+}
+
+.form-control.error:focus {
+    box-shadow: none !important;
+    border-color: #dc3545 !important;
+}

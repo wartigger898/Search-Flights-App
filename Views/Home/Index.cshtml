@@ -1,0 +1,70 @@
+﻿@model CheapFlightsApp.Models.SearchParameters
+
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+@section Styles {
+    <link href="https://cdn.datatables.net/1.10.15/css/dataTables.bootstrap.min.css" rel="stylesheet" />
+    <link href="https://cdn.datatables.net/responsive/2.1.1/css/responsive.bootstrap.min.css" rel="stylesheet" />
+}
+
+<div class="text-center flights_data">
+    <form asp-action="GetFlights" id="flightsForm" method="post">
+        <div class="form-row">
+            <div class="form-group col-md-2">
+                <label asp-for="OriginAirport">Origin</label>
+                <input asp-for="OriginAirport" type="text" class="form-control" name="originAirport" placeholder="Origin" value="SYD">
+            </div>
+            <div class="form-group col-md-2">
+                <label asp-for="DestinationAirport">Destination</label>
+                <input asp-for="DestinationAirport" type="text" class="form-control" name="destinationAirport" placeholder="Destination" value="BKK">
+            </div>
+            <div class="form-group col-md-2">
+                <label asp-for="DepartureDate">Departure Date</label>
+                <input asp-for="DepartureDate" type="text" class="form-control" name="departureDate" placeholder="2020-02-01" value="2021-02-01">
+            </div>
+            <div class="form-group col-md-2">
+                <label asp-for="ReturnDate">Return Date</label>
+                <input asp-for="ReturnDate" type="text" class="form-control" placeholder="2020-03-01" value="2021-03-01">
+            </div>
+            <div class="form-group col-md-2">
+                <label asp-for="NumberOfPassengers">Adults</label>
+                <select asp-for="NumberOfPassengers" class="form-control">
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                </select>
+            </div>
+            <div class="form-group col-md-2">
+                <label asp-for="Currency">Currency</label>
+                <input asp-for="Currency" type="text" class="form-control" placeholder="EUR/USD/HRK" value="EUR">
+            </div>
+        </div>
+        <button type="button" class="btn btn-primary col-md-4" id="search_button">Search</button>
+    </form>
+
+    <table id="flightsData" class="table table-striped table-bordered table-sm" cellspacing="0" width="100%">
+        <thead>
+            <tr>
+                <th class="no-sort">Departure Airport</th>
+                <th class="no-sort">Arrival Airport</th>
+                <th class="no-sort">Departure Date</th>
+                <th class="no-sort">Return Date</th>
+                <th class="no-sort">Departure Connections</th>
+                <th class="no-sort">Return Connections</th>
+                <th class="no-sort">Number Of Passengers</th>
+                <th class="no-sort">Currency</th>
+                <th>Price</th>
+            </tr>
+        </thead>
+    </table>
+</div>
+
+
+@section scripts{
+    <script type="text/javascript" src="~/js/jquery.dataTables.min.js"></script>
+    <script src="~/js/dataTables.bootstrap4.min.js"></script>
+    <script src="~/js/flights-datatable.js" asp-append-version="true"></script>
+}
